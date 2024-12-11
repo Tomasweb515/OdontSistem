@@ -1,0 +1,47 @@
+<html>
+  <head>
+      <style>
+      #calendar {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.calendar-day {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+      </style>
+      <script>function crearCalendario(year, month) {
+    const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+    let calendar = document.getElementById('calendar');
+    calendar.innerHTML = '';
+
+    // Crea los días de la semana
+    days.forEach(day => {
+        let dayElement = document.createElement('div');
+        dayElement.className = 'calendar-day';
+        dayElement.textContent = day;
+        calendar.appendChild(dayElement);
+    });
+
+    // Cálculo de días en un mes
+    const startDate = new Date(year, month, 1);
+    const endDate = new Date(year, month + 1, 0);
+    const numDays = endDate.getDate();
+
+    // Añade los días del calendario
+    for (let i = 1; i <= numDays; i++) {
+        let dayElement = document.createElement('div');
+        dayElement.className = 'calendar-day';
+        dayElement.textContent = i;
+        calendar.appendChild(dayElement);
+    }
+}</script>
+  </head>
+  <body>
+    <div id="calendar"></div>
+  </body>
+</html>

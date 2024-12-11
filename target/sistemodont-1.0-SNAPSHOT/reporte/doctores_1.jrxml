@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="084b2f9f-412d-47c8-94fc-4b69cc0c4e9b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="96"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select d.*,e.* from doctores d inner join especialidades e on d.idespecialidad=e.idespecialidad where iddoctor=$P{id}]]>
+	</queryString>
+	<field name="iddoctor" class="java.lang.Integer"/>
+	<field name="doc_nombre" class="java.lang.String"/>
+	<field name="doc_apellido" class="java.lang.String"/>
+	<field name="doc_telefono" class="java.lang.String"/>
+	<field name="doc_matricula" class="java.lang.String"/>
+	<field name="doc_titulo" class="java.lang.String"/>
+	<field name="idespecialidad" class="java.lang.Integer"/>
+	<field name="doc_ci" class="java.lang.String"/>
+	<field name="esp_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="246" y="31" width="153" height="48" uuid="3f953beb-adb8-47e4-874e-4f8a60153f87"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[DATO DEL DOCTOR:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="399" y="31" width="116" height="28" uuid="9d1d4db3-dfc7-41ad-88d5-fe01b91b3128"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{doc_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="230" splitType="Stretch">
+			<textField>
+				<reportElement x="399" y="90" width="100" height="20" uuid="891b1a6d-3e59-4859-91c0-227c81b820f5"/>
+				<textFieldExpression><![CDATA[$F{doc_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="70" width="25" height="20" uuid="32b5a19a-6c38-44e3-86d0-8e62a1cdad4f"/>
+				<textFieldExpression><![CDATA[$F{iddoctor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="110" width="100" height="20" uuid="551dbddb-e1a1-4551-9650-df9ca2c235fa"/>
+				<textFieldExpression><![CDATA[$F{doc_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="190" width="100" height="20" uuid="e87f7dfd-7171-4149-8579-964bfd69acc4"/>
+				<textFieldExpression><![CDATA[$F{doc_telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="150" width="100" height="20" uuid="74eb7bbb-1ea6-45b6-8a41-f0e29c69f623"/>
+				<textFieldExpression><![CDATA[$F{doc_matricula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="170" width="100" height="20" uuid="1cacd99f-ac0c-49ea-96f3-e021f1835be2"/>
+				<textFieldExpression><![CDATA[$F{doc_titulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="130" width="100" height="20" uuid="d552e475-1599-4fac-a613-3c5d5c5642ec"/>
+				<textFieldExpression><![CDATA[$F{doc_ci}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="210" width="100" height="20" uuid="e8ed188a-fa51-4517-a862-1b7b1c36c34c"/>
+				<textFieldExpression><![CDATA[$F{esp_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="324" y="210" width="75" height="20" uuid="55dec7db-23ad-4f51-9142-7fbccb9e30b2"/>
+				<text><![CDATA[ESPECIALIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="190" width="75" height="20" uuid="483abb22-9d74-40be-8717-8b3f93261ece"/>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="170" width="61" height="20" uuid="f12ef788-dd9b-401a-ab60-3c53d9756a16"/>
+				<text><![CDATA[TITULO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="150" width="75" height="20" uuid="dd0a4f46-1c55-45e2-8e32-bb343cd56bc2"/>
+				<text><![CDATA[MATRICULA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="348" y="130" width="51" height="20" uuid="24ed9fd8-c043-480a-904e-55f2fa6feb84"/>
+				<text><![CDATA[CI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="110" width="75" height="20" uuid="eaa95ed6-f312-437a-be44-b2dd8781a599"/>
+				<text><![CDATA[APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="90" width="75" height="20" uuid="9727ff33-aaf3-41d2-81bd-4d4b81c45040"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="70" width="25" height="20" uuid="2785d8c8-ebf4-4c7a-9fcb-8b7c848c6fe8"/>
+				<text><![CDATA[#]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fac_1_subreport5" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f601be9f-cc19-450e-a3b7-67fbd67e04a3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="detalle" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Tomas\\Desktop\\sistemodont1\\src\\main\\webapp\\reporte\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT ser.ser_nombre,ser.ser_precio,ser.ser_precio-(ser.ser_precio/1.1) as iva_10,con.con_diente FROM public.aperturacaja a left join pagos pg on a.idapertura=pg.idapertura full join usuario us on pg.idusuario=us.idusuario left join citas ci on pg.idcita=ci.idcita full join pacientes pa on ci.idpaciente=pa.idpaciente left join consultas con on ci.idcita=con.idcita left join servicios ser on con.idservicio=ser.idservicio where pg.idpagos=$P{detalle}]]>
+	</queryString>
+	<field name="ser_nombre" class="java.lang.String"/>
+	<field name="ser_precio" class="java.lang.Integer"/>
+	<field name="iva_10" class="java.math.BigDecimal"/>
+	<field name="con_diente" class="java.lang.String"/>
+	<group name="ser_nombre">
+		<groupExpression><![CDATA[$F{ser_nombre}]]></groupExpression>
+	</group>
+	<group name="con_diente">
+		<groupExpression><![CDATA[$F{con_diente}]]></groupExpression>
+	</group>
+	<group name="ser_precio">
+		<groupExpression><![CDATA[$F{ser_precio}]]></groupExpression>
+	</group>
+	<group name="iva_10">
+		<groupExpression><![CDATA[$F{iva_10}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="2" width="100" height="20" uuid="e00ae80b-47c7-44d2-b488-6e253c6afdd5"/>
+				<textFieldExpression><![CDATA[$F{ser_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="2" width="100" height="20" uuid="5628a21c-60ea-4849-80c5-d70c59ef5a2c"/>
+				<textFieldExpression><![CDATA[$F{ser_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="2" width="100" height="20" uuid="c06053bf-acf5-4882-8261-807e5f1bc2b6"/>
+				<textFieldExpression><![CDATA[$F{iva_10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="182" y="2" width="100" height="20" uuid="59fb9666-559e-4464-969a-d8a481ebb5ad"/>
+				<textFieldExpression><![CDATA[$F{con_diente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="2" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

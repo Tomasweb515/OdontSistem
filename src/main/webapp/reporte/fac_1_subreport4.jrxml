@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fac_1_subreport4" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9ab0b633-a0c7-49f8-810c-7dcf1d3ae21f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ee" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from pagos where idpagos=$P{id}]]>
+	</queryString>
+	<field name="idpagos" class="java.lang.Integer"/>
+	<field name="pa_tipo" class="java.lang.String"/>
+	<field name="pa_precio" class="java.lang.Integer"/>
+	<field name="pa_estado" class="java.lang.String"/>
+	<field name="pa_cantidad" class="java.lang.Integer"/>
+	<field name="idcita" class="java.lang.Integer"/>
+	<field name="idapertura" class="java.lang.Integer"/>
+	<field name="idusuario" class="java.lang.Integer"/>
+	<field name="pa_fecha" class="java.sql.Date"/>
+	<field name="pa_motivo" class="java.lang.String"/>
+	<field name="vuelto" class="java.lang.Integer"/>
+	<field name="pa_hora" class="java.sql.Time"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="656896a2-0a85-489a-add3-5907f8cb32df"/>
+				<textFieldExpression><![CDATA[$F{pa_precio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

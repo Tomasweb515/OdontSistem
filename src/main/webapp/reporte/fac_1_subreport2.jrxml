@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fac_1_subreport2" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3413cdbd-9d3f-44f0-8ea2-d6f4fd8ae046">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="detalle" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT ser.ser_nombre,ser.ser_precio,(ser.ser_precio*0.01) as iva_10,con.con_diente FROM public.aperturacaja a left join pagos pg on a.idapertura=pg.idapertura full join usuario us on pg.idusuario=us.idusuario left join citas ci on pg.idcita=ci.idcita full join pacientes pa on ci.idpaciente=pa.idpaciente left join consultas con on ci.idcita=con.idcita left join servicios ser on con.idservicio=ser.idservicio where pg.idpagos=$P{detalle}]]>
+	</queryString>
+	<field name="ser_nombre" class="java.lang.String"/>
+	<field name="ser_precio" class="java.lang.Integer"/>
+	<field name="iva_10" class="java.math.BigDecimal"/>
+	<field name="con_diente" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="38" y="2" width="100" height="20" uuid="c4d8502d-a11d-43c8-aec6-9fd4d58e349b"/>
+				<text><![CDATA[ser_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="2" width="100" height="20" uuid="cb274578-091c-456d-8c02-c729f9b0b534"/>
+				<text><![CDATA[con_diente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="2" width="100" height="20" uuid="ecbed917-df24-4215-bff0-6b5995709bfb"/>
+				<text><![CDATA[ser_precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="528" y="2" width="100" height="20" uuid="ba321738-63c6-4a5f-b141-57732d237f62"/>
+				<text><![CDATA[iva_10]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="07292444-cd77-49c3-b574-a94f65db8050"/>
+				<textFieldExpression><![CDATA[$F{ser_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="0" width="100" height="20" uuid="8f7766da-256e-4820-9755-affa8fad6247"/>
+				<textFieldExpression><![CDATA[$F{con_diente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="0" width="100" height="20" uuid="211623d9-21f7-4a84-a395-847f6022f1a0"/>
+				<textFieldExpression><![CDATA[$F{ser_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="567" y="0" width="100" height="20" uuid="193f8745-0efd-45e7-a66c-3afa9beafa43"/>
+				<textFieldExpression><![CDATA[$F{iva_10}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

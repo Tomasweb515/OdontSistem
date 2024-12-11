@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f047218a-05f6-4c35-ac36-31ac723f819b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Tomas\\Desktop\\sistemodont1\\src\\main\\webapp\\reporte\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT pg.idpagos,ci.total,pa.pa_ci, pg.pa_fecha,pg.pa_tipo,
+pa.pa_nombre,pa.pa_apellido, pg.pa_hora,
+pg.pa_motivo, pg.pa_precio,(ci.total*0.1) as iva_10,
+case  when pg.pa_tipo='Contado' then 'X' else ' '
+end as contado,
+
+case  when pg.pa_tipo='Credito' then 'X' else ' ' 
+end as credito
+ FROM public.aperturacaja a inner join pagos pg on a.idapertura=pg.idapertura inner join usuario us on pg.idusuario=us.idusuario inner join citas ci on pg.idcita=ci.idcita inner join pacientes pa 
+ on ci.idpaciente=pa.idpaciente where pg.idpagos=$P{id}]]>
+	</queryString>
+	<field name="idpagos" class="java.lang.Integer"/>
+	<field name="total" class="java.lang.Integer"/>
+	<field name="pa_ci" class="java.lang.String"/>
+	<field name="pa_fecha" class="java.sql.Date"/>
+	<field name="pa_tipo" class="java.lang.String"/>
+	<field name="pa_nombre" class="java.lang.String"/>
+	<field name="pa_apellido" class="java.lang.String"/>
+	<field name="pa_hora" class="java.sql.Time"/>
+	<field name="pa_motivo" class="java.lang.String"/>
+	<field name="pa_precio" class="java.lang.Integer"/>
+	<field name="iva_10" class="java.math.BigDecimal"/>
+	<field name="contado" class="java.lang.String"/>
+	<field name="credito" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="243" y="43" width="100" height="20" uuid="d49452b5-90a5-4d48-ae57-22b9b96796ca"/>
+				<textFieldExpression><![CDATA[$F{contado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="46" y="18" width="100" height="20" uuid="869d81ef-67ab-4b12-827a-a7714c4d7133"/>
+				<textFieldExpression><![CDATA[$F{pa_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="277" y="19" width="100" height="20" uuid="75def494-4eac-4cf0-a74a-894908713e4f"/>
+				<textFieldExpression><![CDATA[$F{pa_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="19" width="100" height="20" uuid="7a7ea3fb-0479-41d7-a512-e71a273f6c62"/>
+				<textFieldExpression><![CDATA[$F{iva_10}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="125" uuid="2274cde3-3909-40c1-aaa9-0c7016787674"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report2_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

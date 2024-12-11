@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fac_1_subreport3" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f67cb928-c0da-480c-bf07-52e090136915">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="detalle" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT ser.ser_nombre,ser.ser_precio,ser.ser_precio-(ser.ser_precio/1.1) as iva_10,con.con_diente FROM public.aperturacaja a left join pagos pg on a.idapertura=pg.idapertura full join usuario us on pg.idusuario=us.idusuario left join citas ci on pg.idcita=ci.idcita full join pacientes pa on ci.idpaciente=pa.idpaciente left join consultas con on ci.idcita=con.idcita left join servicios ser on con.idservicio=ser.idservicio where pg.idpagos=$P{detalle}]]>
+	</queryString>
+	<field name="ser_nombre" class="java.lang.String"/>
+	<field name="ser_precio" class="java.lang.Integer"/>
+	<field name="iva_10" class="java.math.BigDecimal"/>
+	<field name="con_diente" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="0" width="100" height="20" uuid="75ef51e7-ab6c-4697-bcf1-c980ed276522"/>
+				<textFieldExpression><![CDATA[$F{ser_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="83" height="20" uuid="b7020362-7cd7-4afb-9a86-3dc198e9ac45"/>
+				<textFieldExpression><![CDATA[$F{ser_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="181" y="0" width="100" height="20" uuid="486b2e9c-6c12-46f8-9f4a-fe99ba52d5b1"/>
+				<textFieldExpression><![CDATA[$F{con_diente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="484" y="0" width="100" height="20" uuid="04f4061b-fbf0-4a3e-9cd2-f47997f11b41"/>
+				<textFieldExpression><![CDATA[$F{iva_10}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

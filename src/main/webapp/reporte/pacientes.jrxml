@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ef693e6-4ad5-427f-97ba-842e739856b6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select p.*,c.* from pacientes p inner join ciudades c on p.idciudad=c.idciudad]]>
+	</queryString>
+	<field name="idpaciente" class="java.lang.Integer"/>
+	<field name="pa_nombre" class="java.lang.String"/>
+	<field name="pa_apellido" class="java.lang.String"/>
+	<field name="pa_telefono" class="java.lang.String"/>
+	<field name="pa_ci" class="java.lang.String"/>
+	<field name="pa_correo" class="java.lang.String"/>
+	<field name="ciu_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="205" y="16" width="306" height="51" uuid="396f6a3d-7d53-4f1d-bab0-5837067f52f1"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[LISTA DE PACIENTES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="20" height="20" uuid="c02130b6-82de-466e-b5af-f7facd5a9141"/>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="2" width="64" height="20" uuid="bf1af508-bd13-43c3-842f-45db67b6055d"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="2" width="68" height="20" uuid="eee30416-1368-4b0f-9398-ebce6cacd548"/>
+				<text><![CDATA[APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="2" width="73" height="20" uuid="1eb3eeea-6423-462b-ac8e-27d88b2d567f"/>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="0" width="67" height="20" uuid="e42b3166-6e1c-4d04-842b-12416b885ee7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="2" width="100" height="20" uuid="476f70d6-516f-4a80-8826-baf6e750a8ac"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CORREO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="2" width="100" height="20" uuid="b28bd934-ed64-4094-8e37-73b9643b72e7"/>
+				<text><![CDATA[CIUDADES]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="20" height="20" uuid="623944e9-01ba-4f04-a0a8-aed5e0b84827"/>
+				<textFieldExpression><![CDATA[$F{idpaciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="1" width="64" height="20" uuid="03c30888-7e68-4506-9347-94baa16cf9f9"/>
+				<textFieldExpression><![CDATA[$F{pa_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="0" width="68" height="20" uuid="bbcb9e29-0694-4f06-b05e-ffca7ba162b9"/>
+				<textFieldExpression><![CDATA[$F{pa_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="1" width="73" height="20" uuid="202ab8cc-0460-4354-bd7c-e27dd22afafe"/>
+				<textFieldExpression><![CDATA[$F{pa_telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="1" width="67" height="20" uuid="29dc50ba-b25c-41a5-8bd8-91e1957f3668"/>
+				<textFieldExpression><![CDATA[$F{pa_ci}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="292" y="1" width="100" height="20" uuid="a91520eb-d77a-450a-bd27-6ab7374846a8"/>
+				<textFieldExpression><![CDATA[$F{pa_correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="0" width="100" height="20" uuid="4168abc6-ea0c-493b-81e9-c923f450269f"/>
+				<textFieldExpression><![CDATA[$F{ciu_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

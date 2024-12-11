@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fac_1_subreport6" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="56fbbadc-4f5f-43e3-843a-4fd1ed4cda02">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from pagos]]>
+	</queryString>
+	<field name="idpagos" class="java.lang.Integer"/>
+	<field name="pa_tipo" class="java.lang.String"/>
+	<field name="pa_precio" class="java.lang.Integer"/>
+	<field name="pa_estado" class="java.lang.String"/>
+	<field name="pa_cantidad" class="java.lang.Integer"/>
+	<field name="idcita" class="java.lang.Integer"/>
+	<field name="idapertura" class="java.lang.Integer"/>
+	<field name="idusuario" class="java.lang.Integer"/>
+	<field name="pa_fecha" class="java.sql.Date"/>
+	<field name="pa_motivo" class="java.lang.String"/>
+	<field name="vuelto" class="java.lang.Integer"/>
+	<field name="pa_hora" class="java.sql.Time"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="102" y="2" width="100" height="20" uuid="e6d380a7-330b-4974-a12c-fcff6cc1353c"/>
+				<text><![CDATA[pa_tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="308" y="2" width="100" height="20" uuid="ade9bd70-2a5b-4943-9a5b-c70ade137294"/>
+				<text><![CDATA[idcita]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="67" splitType="Stretch">
+			<textField>
+				<reportElement x="102" y="8" width="100" height="20" uuid="0d07cc08-4603-4521-9474-6cd2150c302f"/>
+				<textFieldExpression><![CDATA[$F{pa_tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="308" y="8" width="100" height="20" uuid="42bfa6c0-18ea-445e-8d0d-63966a7dcc47"/>
+				<textFieldExpression><![CDATA[$F{idcita}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

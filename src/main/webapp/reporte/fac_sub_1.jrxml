@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fac_sub" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="56d1854e-4406-4be9-83a1-fa3e4b5bb881">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="detalle" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT c.idcita, c.ci_estado, p.idpaciente,p.pa_nombre, c.fecharegistro, c.total, c.hora, c.ruc FROM citas c inner join pacientes p on c.idpaciente=p.idpaciente where c.ci_estado='Finalizado' and c.idcita=$P{detalle}]]>
+	</queryString>
+	<field name="idcita" class="java.lang.Integer"/>
+	<field name="ci_estado" class="java.lang.String"/>
+	<field name="idpaciente" class="java.lang.Integer"/>
+	<field name="pa_nombre" class="java.lang.String"/>
+	<field name="fecharegistro" class="java.sql.Date"/>
+	<field name="total" class="java.lang.Integer"/>
+	<field name="hora" class="java.sql.Time"/>
+	<field name="ruc" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="129" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="0" width="97" height="27" uuid="070d496a-0759-439a-b00e-98b3be163e2c"/>
+				<textFieldExpression><![CDATA[$F{idpaciente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

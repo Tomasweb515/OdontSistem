@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fac_1_subreport1" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7a203bdd-c73f-4a04-ba8a-90d54dd57008">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="44"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="detalle" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT ser.ser_nombre,ser.ser_precio,con.con_estado,con.con_diente FROM public.aperturacaja a left
+join pagos pg on a.idapertura=pg.idapertura right join usuario us on pg.idusuario=us.idusuario right join citas ci on pg.idcita=ci.idcita left join pacientes pa on ci.idpaciente=pa.idpaciente left join consultas con on ci.idcita=con.idcita left join servicios ser on con.idservicio=ser.idservicio where ci.idcita=$P{detalle}]]>
+	</queryString>
+	<field name="ser_nombre" class="java.lang.String"/>
+	<field name="ser_precio" class="java.lang.Integer"/>
+	<field name="con_estado" class="java.lang.String"/>
+	<field name="con_diente" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="32" y="-2" width="100" height="20" uuid="110469ad-cafd-4761-96ae-72a9fd534358"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{con_diente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="206" y="1" width="100" height="20" uuid="3bbc9e3c-824c-428b-b91e-d1bcbcee216e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ser_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="1" width="100" height="20" uuid="d1ead7fc-cd66-4d5f-b08e-971f6b80d0b4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ser_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="544" y="1" width="100" height="20" uuid="bba69b6d-92cf-402c-985b-a0d01182cc47"/>
+				<textFieldExpression><![CDATA[$F{con_estado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

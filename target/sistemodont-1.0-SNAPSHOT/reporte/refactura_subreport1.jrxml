@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="refactura_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="28d3da56-ff88-4644-8aa8-1f9189c207ee">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="detalle" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT con_diente,ser_nombre,ser_precio
+	FROM public.consultas con inner join servicios s on con.idservicio=s.idservicio where con.idconsulta=$P{detalle}]]>
+	</queryString>
+	<field name="con_diente" class="java.lang.String"/>
+	<field name="ser_nombre" class="java.lang.String"/>
+	<field name="ser_precio" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="489f10f1-7c0c-42dd-9866-777062987766"/>
+				<textFieldExpression><![CDATA[$F{con_diente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="0" width="100" height="20" uuid="e859060b-3d3c-4eb6-9d96-1b86aa62cf54"/>
+				<textFieldExpression><![CDATA[$F{ser_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="297" y="0" width="100" height="20" uuid="a13006c9-0f16-4558-8204-2f7ee4fa71cc"/>
+				<textFieldExpression><![CDATA[$F{ser_precio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

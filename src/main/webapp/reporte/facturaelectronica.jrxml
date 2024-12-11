@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e502b50f-90d4-42e8-8f6e-2585e38eecfd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="detalle" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Tomas\\Desktop\\sistemodont1\\src\\main\\webapp\\reporte\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT pg.idpagos,ci.total,pa.pa_ci, pg.pa_fecha,pg.pa_tipo,pa.pa_nombre,pa.pa_apellido, pg.pa_hora, pg.idapertura, pg.pa_motivo, pg.pa_precio,(ci.total*0.1) as iva_10 FROM public.aperturacaja a inner join pagos pg on a.idapertura=pg.idapertura inner join usuario us on pg.idusuario=us.idusuario inner join citas ci on pg.idcita=ci.idcita inner join pacientes pa on ci.idpaciente=pa.idpaciente where pg.idpagos=$P{detalle}]]>
+	</queryString>
+	<field name="idpagos" class="java.lang.Integer"/>
+	<field name="total" class="java.lang.Integer"/>
+	<field name="pa_ci" class="java.lang.String"/>
+	<field name="pa_fecha" class="java.sql.Date"/>
+	<field name="pa_tipo" class="java.lang.String"/>
+	<field name="pa_nombre" class="java.lang.String"/>
+	<field name="pa_apellido" class="java.lang.String"/>
+	<field name="pa_hora" class="java.sql.Time"/>
+	<field name="idapertura" class="java.lang.Integer"/>
+	<field name="pa_motivo" class="java.lang.String"/>
+	<field name="pa_precio" class="java.lang.Integer"/>
+	<field name="iva_10" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="41" width="100" height="20" uuid="663fa8ee-e978-472d-af7f-96bd3f2f9203"/>
+				<textFieldExpression><![CDATA[$F{pa_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="126" y="41" width="100" height="20" uuid="ebee8eae-53e5-40f6-ba20-17f7e8e6fd8f"/>
+				<textFieldExpression><![CDATA[$F{pa_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="1" width="100" height="20" uuid="9df797ba-fe48-4a5c-acec-b9fc9048fd86"/>
+				<textFieldExpression><![CDATA[$F{pa_fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="125" uuid="26348334-7370-4189-9fcc-f60db1861aa2"/>
+				<subreportParameter name="detalle"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "facturaelectronica_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

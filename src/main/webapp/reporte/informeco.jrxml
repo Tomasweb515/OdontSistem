@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7849aea-b383-4d16-b2f6-e2ecb013a5ee">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="112"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaini" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechafin" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="estado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.idcita,to_char(c.fecharegistro,'dd/mm/YYYY'),p.pa_nombre,c.total from citas c inner join pacientes p on c.idpaciente = p.idpaciente where  c.fecharegistro BETWEEN $P{fechaini} AND $P{fechafin} and ci_estado=$P{estado}]]>
+	</queryString>
+	<field name="idcita" class="java.lang.Integer"/>
+	<field name="to_char" class="java.lang.String"/>
+	<field name="pa_nombre" class="java.lang.String"/>
+	<field name="total" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<textField>
+				<reportElement x="521" y="49" width="100" height="20" uuid="bdd37c71-919e-4122-a70c-22cb7b34283c"/>
+				<textFieldExpression><![CDATA[$P{fechaini}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="680" y="49" width="100" height="20" uuid="046d39e5-51de-4662-8b0a-fd36c0665029"/>
+				<textFieldExpression><![CDATA[$P{fechafin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="377" y="0" width="100" height="20" uuid="fda784d8-c439-4b0d-a5ed-062323717ef1"/>
+				<text><![CDATA[Nombre del paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="239" y="0" width="100" height="20" uuid="1c266c6d-0727-46be-a68e-9c11f510fccb"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="2" width="100" height="20" uuid="8d5a9c14-02d6-4404-a25a-d9601cb6b3b1"/>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="550" y="2" width="100" height="20" uuid="05c210ba-1b31-4455-b44d-2184991035af"/>
+				<text><![CDATA[total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="377" y="0" width="100" height="20" uuid="6fe0e985-744c-4ffc-9e13-5e4ce7d2a1e5"/>
+				<textFieldExpression><![CDATA[$F{pa_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="239" y="0" width="100" height="20" uuid="a2f3a6b4-908e-4a83-a2a7-feb4d8b09fa6"/>
+				<textFieldExpression><![CDATA[$F{to_char}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="100" height="20" uuid="6d0a4cb9-66a0-4087-8b9b-52a07aa6a1ef"/>
+				<textFieldExpression><![CDATA[$F{idcita}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="550" y="2" width="100" height="20" uuid="0a0ebf3e-c112-4be1-8812-c51f49de4884"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

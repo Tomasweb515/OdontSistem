@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9e08c7e2-ebbe-4bf1-8e7c-848fd7fc46c6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from especialidades]]>
+	</queryString>
+	<field name="idespecialidad" class="java.lang.Integer"/>
+	<field name="esp_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="79" y="28" width="402" height="40" uuid="5822fa64-a733-457c-a7b0-0551ef8a3ceb"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[LISTA DE LAS ESPECIALIDADES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="162" y="2" width="100" height="20" uuid="49883ea6-3034-44eb-9982-9711aadd7190"/>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="0" width="100" height="20" uuid="4c29d675-08a4-45b4-bd9b-fcd992a1284e"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="162" y="0" width="100" height="20" uuid="ff965368-f1dc-4df1-8605-de1868e61aef"/>
+				<textFieldExpression><![CDATA[$F{idespecialidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="0" width="100" height="20" uuid="5489abf9-b021-4178-879e-0e51beb4c950"/>
+				<textFieldExpression><![CDATA[$F{esp_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

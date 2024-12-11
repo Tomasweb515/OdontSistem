@@ -1,0 +1,52 @@
+
+
+.odontogram {
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+    max-width: 10%;
+}
+
+
+
+.tooth {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin: 10px;
+    padding: 20px;
+}
+
+.tooth:hover {
+    background-color: #cce7ff;
+    border-color: #007bff;
+}
+
+.tooth.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #0056b3;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .tooth {
+        width: 40px;
+        height: 40px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tooth {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+    }
+}

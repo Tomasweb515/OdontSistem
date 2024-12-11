@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7849aea-b383-4d16-b2f6-e2ecb013a5ee">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="111"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaini" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechafin" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="estado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 
+    c.idcita,
+    p.pa_nombre,
+    d.doc_nombre, d.doc_apellido,
+    
+    c.total
+FROM 
+    citas c
+INNER JOIN 
+    pacientes p ON c.idpaciente = p.idpaciente
+INNER JOIN 
+    consultas con ON c.idcita = con.idcita
+INNER JOIN 
+    servicios s ON con.idservicio = s.idservicio
+INNER JOIN 
+    doctores d ON s.iddoctor = d.iddoctor where
+    c.fecharegistro BETWEEN $P{fechaini} AND $P{fechafin};
+]]>
+	</queryString>
+	<field name="idcita" class="java.lang.Integer"/>
+	<field name="pa_nombre" class="java.lang.String"/>
+	<field name="doc_nombre" class="java.lang.String"/>
+	<field name="doc_apellido" class="java.lang.String"/>
+	<field name="total" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="416" y="0" width="100" height="20" uuid="fda784d8-c439-4b0d-a5ed-062323717ef1"/>
+				<text><![CDATA[Nombre del paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="2" width="100" height="20" uuid="8d5a9c14-02d6-4404-a25a-d9601cb6b3b1"/>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="0" width="100" height="20" uuid="b724ba8a-4971-4188-bbf0-104aea66f5a7"/>
+				<text><![CDATA[Nombre del doctor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="0" width="100" height="20" uuid="c6746bad-5ac8-4507-a6d7-8fda8b92bc0b"/>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="416" y="2" width="100" height="20" uuid="6fe0e985-744c-4ffc-9e13-5e4ce7d2a1e5"/>
+				<textFieldExpression><![CDATA[$F{pa_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="100" height="20" uuid="6d0a4cb9-66a0-4087-8b9b-52a07aa6a1ef"/>
+				<textFieldExpression><![CDATA[$F{idcita}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="0" width="100" height="20" uuid="1c975b9d-0117-4956-b1f9-4227749fc087"/>
+				<textFieldExpression><![CDATA[$F{doc_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="0" width="100" height="20" uuid="571d64d6-c3ee-44f0-aaf0-68b796d067a0"/>
+				<textFieldExpression><![CDATA[$F{doc_apellido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

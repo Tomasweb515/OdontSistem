@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46055147-fb80-4776-907d-2cb1cf3fbfe9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select h.*,d.* from horarios h inner join doctores d on d.iddoctor=h.iddoctor]]>
+	</queryString>
+	<field name="idhorario" class="java.lang.Integer"/>
+	<field name="hora_atencion" class="java.sql.Time"/>
+	<field name="hora_estado" class="java.lang.String"/>
+	<field name="doc_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="157" y="23" width="312" height="56" uuid="0c235014-c3b8-41d3-9b0e-7b68bbf3859f"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[LISTA DE LAS HORAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="32" y="2" width="100" height="20" uuid="ce99f9e2-0c18-4d8b-9972-3b98d2c39aa4"/>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="2" width="100" height="20" uuid="69189532-00b3-4bdf-95e8-a10e2bd79edb"/>
+				<text><![CDATA[HORA ATENCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="2" width="100" height="20" uuid="02a80ce2-b2a8-4c67-8767-b9e58a7e24c2"/>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="0" width="100" height="20" uuid="66834e93-22cb-4186-a1f8-f410769c1fc2"/>
+				<text><![CDATA[DOCTORES]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="32" y="0" width="100" height="20" uuid="64be574f-63d8-4b07-bf9e-4aa44dbdf3a5"/>
+				<textFieldExpression><![CDATA[$F{idhorario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="0" width="100" height="20" uuid="3b622902-e1f3-43ee-a0df-240aeeda113a"/>
+				<textFieldExpression><![CDATA[$F{hora_atencion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="3" width="100" height="20" uuid="9f01c540-edb8-4ed4-9774-6d8a3702729f"/>
+				<textFieldExpression><![CDATA[$F{hora_estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="409" y="3" width="100" height="20" uuid="55551770-028e-4239-8273-25ac5d4befe7"/>
+				<textFieldExpression><![CDATA[$F{doc_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

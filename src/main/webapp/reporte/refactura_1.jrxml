@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ad8bd598-ca86-4f88-bfa2-35ce63a03f04">
+	<property name="ireport.zoom" value="0.5644739300537784"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="detalle" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Tomas\\Desktop\\sistemodont1\\src\\main\\webapp\\reporte\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT pg.idpagos,ci.total,pa.pa_ci, pg.pa_fecha,pg.pa_tipo,pa.pa_nombre,pa.pa_apellido, pg.pa_hora, pg.idapertura, pg.pa_motivo, pg.pa_precio,(ci.total*0.1) as iva_10 FROM public.aperturacaja a inner join pagos pg on a.idapertura=pg.idapertura inner join usuario us on pg.idusuario=us.idusuario inner join citas ci on pg.idcita=ci.idcita inner join pacientes pa on ci.idpaciente=pa.idpaciente where pg.idpagos=$P{detalle}]]>
+	</queryString>
+	<field name="idpagos" class="java.lang.Integer"/>
+	<field name="total" class="java.lang.Integer"/>
+	<field name="pa_ci" class="java.lang.String"/>
+	<field name="pa_fecha" class="java.sql.Date"/>
+	<field name="pa_tipo" class="java.lang.String"/>
+	<field name="pa_nombre" class="java.lang.String"/>
+	<field name="pa_apellido" class="java.lang.String"/>
+	<field name="pa_hora" class="java.sql.Time"/>
+	<field name="idapertura" class="java.lang.Integer"/>
+	<field name="pa_motivo" class="java.lang.String"/>
+	<field name="pa_precio" class="java.lang.Integer"/>
+	<field name="iva_10" class="java.math.BigDecimal"/>
+	<title>
+		<band height="419" splitType="Stretch">
+			<rectangle>
+				<reportElement x="588" y="124" width="211" height="56" uuid="e3bf31bd-ec84-4529-901d-5f2c3693b554"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="308" y="0" width="211" height="100" uuid="b21199bd-ab54-4130-b5f6-b9b09bfdf563"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="274" y="0" width="242" height="20" uuid="5ce5bc3a-dad4-4489-88b4-b48bd1bbd2bc"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[sYSTEM ODONT]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="588" y="0" width="211" height="100" uuid="c239975a-2681-409d-b061-524c8f608a60"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="140" width="587" height="20" uuid="aefb7488-aab2-405b-90a6-9f9342b8bfa4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="608" y="124" width="165" height="20" uuid="20d08e47-7514-4b35-b843-928d0f0bc176"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CONDICION DE VENTA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="588" y="140" width="120" height="40" uuid="30772cce-f0a5-4937-bd22-1641d06bd9fd"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="608" y="152" width="70" height="20" uuid="38b8dfbe-d918-42ec-85c9-83ea396ad725"/>
+				<text><![CDATA[CONTADO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="680" y="152" width="17" height="16" uuid="b3b12597-c232-4846-b1e3-f658835c8109"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="708" y="140" width="91" height="40" uuid="e9f90f58-31b2-4d9e-af0b-3926d2b920be"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="708" y="152" width="70" height="20" uuid="54abb904-7809-4b77-84bb-8cb426d93967"/>
+				<text><![CDATA[  CREDITO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="778" y="152" width="17" height="16" uuid="7c14325d-5d0e-4cef-9c4e-928a9951aecb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="588" y="80" width="211" height="20" uuid="24468757-2436-416f-88d8-569ca8a16cf0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="617" y="80" width="45" height="20" uuid="7cae5b50-e81b-4afc-bb15-25677d1347c1"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="588" y="63" width="211" height="20" uuid="3dc1008c-6ed4-4471-8816-64afe13d489b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="649" y="0" width="100" height="20" uuid="b0f8cae2-6afa-4f81-aa4c-aa12b212f585"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIMBRADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="613" y="60" width="171" height="20" uuid="68d7888d-739e-4cf0-8939-86856a6fb8d6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACTURA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="588" y="43" width="211" height="20" uuid="3c7b0717-9504-40f7-9362-27ec22090d42"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="610" y="46" width="168" height="17" uuid="d68f488c-c443-4e21-a6c6-bf3f6c9b2a2b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC 00000000-0]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="588" y="33" width="211" height="13" uuid="8f13e16a-64bd-4398-b713-de2ba4279efd"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="613" y="33" width="165" height="13" uuid="5042ae3a-ef0f-40b7-acae-e033c0ed2e95"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA FIN VIGENCIA 0000-00-00]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="588" y="20" width="211" height="13" uuid="c4960371-b897-4492-bc3b-b31cff5374e8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="608" y="20" width="168" height="13" uuid="ed1dd212-2916-4422-b8b9-c936b9275897"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA INICIO VIGENCIA 0000-00-00]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="308" y="80" width="211" height="20" uuid="acca1914-a0f0-4896-a544-8eba7a97f59a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="287" y="80" width="242" height="20" uuid="4aebc59c-bf97-4af7-a4fc-4974a813b81e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[3542346456]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="308" y="60" width="211" height="20" uuid="64800d6e-7a69-45dd-a772-c74c7523746d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="277" y="63" width="242" height="20" uuid="ad5f341f-1534-4953-8542-514740ab14c8"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DAD@GMAIL.COM]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="308" y="20" width="211" height="20" uuid="dd056cd0-1eea-4c0e-8255-a32ea3c62d0f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="308" y="40" width="211" height="20" uuid="e827ed08-f88d-4bbd-adb7-43231fb92a60"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="274" y="20" width="242" height="20" uuid="45535d0e-f82d-44bf-a07d-a89a46568a76"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Sistema de cobro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="277" y="40" width="242" height="20" uuid="301873f1-2322-4e0c-8f95-c9a6793fe898"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SAN LORENZO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="124" width="587" height="16" uuid="f07fcfaa-9030-48f4-99f4-5f92524b5098"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="160" width="587" height="20" uuid="2af6825a-ea37-4929-a4f3-a94f01bd0bbd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="124" width="99" height="16" uuid="eaf6b7c5-b7b2-45aa-b4dc-9ad942e3dce6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="120" width="99" height="20" uuid="9b36940a-914d-4bf1-b38e-942237bb63c4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[fecha de emision]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="140" width="99" height="20" uuid="c1662d02-35f4-47ad-93fc-4d8234957a02"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="140" width="100" height="20" uuid="ee8fedec-8186-40dc-97bd-1d0160b14758"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="160" width="99" height="20" uuid="f7734759-ada8-4fea-84cd-c877999d70de"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="12" y="160" width="40" height="20" uuid="2cdc332b-b2fe-48f0-930f-c5565445d2ab"/>
+				<text><![CDATA[ruc]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="194" width="169" height="20" uuid="14855d54-1336-4ede-b524-46dbe8a09440"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="194" width="169" height="20" uuid="85510e9a-007d-4e86-ac80-043c5a984a46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DIENTE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="170" y="194" width="317" height="20" uuid="dc2bae7e-5196-415b-934f-e7c142374de0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="170" y="194" width="317" height="20" uuid="0395d053-b661-48d0-8500-93ee43703870"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DESCRIPCION DEL SERVICIO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="486" y="194" width="122" height="20" uuid="2942ea7f-ebd6-4448-9c2e-55ef53d641da"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="487" y="194" width="121" height="20" uuid="eaab0c35-7d7d-4cb1-9c8f-cc50144aa8b4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PRECIO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="608" y="194" width="89" height="20" uuid="480cb445-c862-4641-9407-344a38dc6593"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="613" y="194" width="84" height="20" uuid="6f22f1e4-7688-4d75-8d83-528034cb20f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[EXENTA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="697" y="194" width="58" height="20" uuid="c6bd8c14-3184-4eb0-8b89-b07b16724891"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="700" y="194" width="55" height="20" uuid="80ee16cb-d133-47b0-991c-2de832db8f72"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[5%]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="755" y="194" width="47" height="20" uuid="ab841e9a-4ef9-4752-9fd8-1e590014714c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="755" y="194" width="50" height="20" uuid="95f9526f-ac96-4aa0-8732-d0580cd2bf48"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[10%]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="1" y="224" width="801" height="100" uuid="1e10ba6c-ff4d-4473-a90a-384b61a05488"/>
+				<subreportParameter name="detalle"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "facturaelectronica_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="391" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="327" width="100" height="20" uuid="41abc92e-de27-42ff-bd67-957abdac66fa"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ SON GS.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="755" y="329" width="47" height="20" uuid="8283aa64-cdf5-4199-9e1a-cff96e8414b8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="369" width="71" height="20" uuid="f79b9e70-9e49-4f54-b97f-38e4b583c5e4"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ LIQ IVA: 5%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="369" width="26" height="20" uuid="09039651-821d-479d-8440-e61a8d8f86b4"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[10%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="329" width="100" height="20" uuid="764f71d5-4c59-4403-a99a-f562197e330d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ SUB TOTALES]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="329" width="695" height="20" uuid="5e5eeabd-22c6-4c44-980e-1f45f53b763c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="369" width="634" height="20" uuid="cd32927b-fc59-4843-b96c-60f618c7e414"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="634" y="349" width="168" height="40" uuid="1b8122fe-c0be-493b-81b7-3beb3ce7b9fd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="695" y="329" width="60" height="20" uuid="b1be72b4-0264-4a08-a17b-b7e6e0f46c7d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="349" width="634" height="20" uuid="0f97641e-bbed-4b55-8364-31d28cc17cca"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="347" width="100" height="20" uuid="8f4675d9-0be9-4bce-af2d-2e5e3a388389"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ SON GS.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="367" width="71" height="20" uuid="5e0ac4a2-ab29-45ea-88f4-a6b0a8bd4a00"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ LIQ IVA: 5%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="367" width="26" height="20" uuid="88a2f177-1ad5-4eff-b515-a0c1e5917c5b"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[10%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="369" width="67" height="20" uuid="85e12cc2-1ab5-4336-ba69-26ae621ac407"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[TOTAL IVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="329" width="100" height="20" uuid="aa0eaece-558f-4c06-bc79-c87c1c6f602a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[SUBTOTALES]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="170" y="0" width="317" height="327" uuid="a212b286-c03f-4bfb-93d5-4018cdcb67b2"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+			</frame>
+			<rectangle>
+				<reportElement x="487" y="2" width="123" height="327" uuid="c958253b-e4bf-4b0a-ad6b-ca53471e6af0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="608" y="2" width="87" height="327" uuid="383dad23-c38d-48b7-b031-50254115122e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="697" y="2" width="60" height="327" uuid="be9881c0-bac3-4ca7-87ba-c60ffc87a422"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="755" y="0" width="47" height="329" uuid="eef82931-fe65-4b60-8d1a-63ad33c48db9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="169" height="329" uuid="232f5b53-5f97-4690-959b-15d98e6c6c36"/>
+			</rectangle>
+		</band>
+	</detail>
+</jasperReport>

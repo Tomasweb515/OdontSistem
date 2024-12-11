@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6c16a822-74e9-4d14-a80c-4522107016e2">
+	<queryString language="SQL">
+		<![CDATA[SELECT ex.idextraccion, ex.ex_fecha, ex.ex_hora, ex.ex_monto, us.usu_nombre, ex.idapertura, ex.ex_descripcion, ex.exingreso_monto FROM public.extraccioncaja ex inner join usuario us on ex.idusuario=us.idusuario;]]>
+	</queryString>
+	<field name="idextraccion" class="java.lang.Integer"/>
+	<field name="ex_fecha" class="java.sql.Date"/>
+	<field name="ex_hora" class="java.lang.String"/>
+	<field name="ex_monto" class="java.lang.Integer"/>
+	<field name="usu_nombre" class="java.lang.String"/>
+	<field name="idapertura" class="java.lang.Integer"/>
+	<field name="ex_descripcion" class="java.lang.String"/>
+	<field name="exingreso_monto" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
